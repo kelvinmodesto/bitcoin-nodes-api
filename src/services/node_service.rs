@@ -39,12 +39,28 @@ mod tests {
     }
 
     #[test]
-    fn test_multiple_services_are_independent() {
+    fn test_multiple_services_are_independent_and_functional() {
+        let serviceA = NodeService::new();
+        let serviceB = NodeService::new();
+
         // Each service should have been independent
-        assert!(!std::ptr::eq(
-            &NodeService::new().client,
-            &NodeService::new().client
-        ));
+        assert!(!std::ptr::eq(&serviceA.client, &serviceB.client));
+
+        // And functional
+        assert!(
+            serviceA
+                .client
+                .get("https://api.api-onepiece.com/v2/fruits/en")
+                .build()
+                .is_ok()
+        );
+        assert!(
+            serviceB
+                .client
+                .get("https://api.api-onepiece.com/v2/sagas/en")
+                .build()
+                .is_ok()
+        )
     }
 
     #[test]
