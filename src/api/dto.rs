@@ -4,19 +4,19 @@ use std::collections::HashMap;
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct NodeAPI {
     #[serde(rename = "publicKey")]
-    public_key: String,
-    alias: String,
-    channels: u32,
-    capacity: u64,
+    pub public_key: String,
+    pub alias: String,
+    pub channels: u32,
+    pub capacity: u64,
     #[serde(rename = "firstSeen")]
-    first_seen: u64,
+    pub first_seen: u64,
     #[serde(rename = "updatedAt")]
-    updated_at: u64,
-    city: Option<HashMap<String, String>>,
-    country: HashMap<String, String>,
-    iso_code: String,
+    pub updated_at: u64,
+    pub city: Option<HashMap<String, String>>,
+    pub country: HashMap<String, String>,
+    pub iso_code: String,
     #[serde(default, deserialize_with = "deserialize_json_to_string_hashmap")]
-    subdivision: Option<HashMap<String, String>>,
+    pub subdivision: Option<HashMap<String, String>>,
 }
 
 fn deserialize_json_to_string_hashmap<'de, D>(
