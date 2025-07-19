@@ -2,7 +2,7 @@ use serde::{Deserialize, Deserializer, Serialize};
 use std::collections::HashMap;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Node {
+pub struct NodeAPI {
     #[serde(rename = "publicKey")]
     public_key: String,
     alias: String,
@@ -57,7 +57,7 @@ mod tests {
         result
     }
 
-    fn generate_valid_node() -> Node {
+    fn generate_valid_node() -> NodeAPI {
         let city: HashMap<String, String> = generate_mock_hash_map();
         let country: HashMap<String, String> = generate_mock_hash_map();
 
@@ -65,7 +65,7 @@ mod tests {
             r#"{"de":"Hessen","en":"Hesse","es":"Hessen","fr":"Hesse","ru":"Гессен"}"#;
         let subdivision = parse_hashmap_from_json(subdivision_json);
 
-        Node {
+        NodeAPI {
             public_key: String::from(
                 "03864ef025fde8fb587d989186ce6a4a186895ee44a926bfc370e2c366597a3f8f",
             ),
