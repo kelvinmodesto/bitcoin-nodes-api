@@ -99,4 +99,23 @@ mod tests {
         assert!(formatted.ends_with("Z"));
         assert!(formatted.len() == 20); // "2021-01-01T00:00:00Z".len() == 20
     }
+
+    #[test]
+    fn test_capacity_conversion_various_amounts() {
+        // Test different satoshi amounts
+        assert_eq!(format_capacity(100000000), "1"); // 1 BTC
+        assert_eq!(format_capacity(150000000), "1.5"); // 1.5 BTC
+        assert_eq!(format_capacity(50000000), "0.5"); // 0.5 BTC
+        assert_eq!(format_capacity(1000000), "0.01"); // 0.01 BTC
+        assert_eq!(format_capacity(100000), "0.001"); // 0.001 BTC
+        assert_eq!(format_capacity(1), "0.00000001"); // 1 sat
+        assert_eq!(format_capacity(0), "0"); // 0 sats
+    }
+
+    #[test]
+    fn test_large_capacity_values() {
+        // Test with large values (like what you might see in real Lightning nodes)
+        assert_eq!(format_capacity(2100000000000000), "21000000"); // Max BTC supply
+        assert_eq!(format_capacity(500000000000), "5000"); // 5000 BTC
+    }
 }
