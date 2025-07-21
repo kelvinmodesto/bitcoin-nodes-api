@@ -1,5 +1,5 @@
 use crate::api::dto::NodeAPI;
-use chrono::DateTime;
+use chrono::{DateTime, Utc};
 use diesel::prelude::*;
 use serde::{Deserialize, Serialize};
 use uuid::Uuid;
@@ -13,11 +13,11 @@ pub struct Node {
     pub alias: String,
     pub capacity: String,
     pub first_seen: String,
-    pub created_at: chrono::DateTime<chrono::Utc>,
-    pub updated_at: chrono::DateTime<chrono::Utc>,
+    pub created_at: DateTime<Utc>,
+    pub updated_at: DateTime<Utc>,
 }
 
-#[derive(Insertable, Serialize, Deserialize, Debug)]
+#[derive(Insertable, Serialize, Clone, Deserialize, Debug)]
 #[diesel(table_name = crate::db::schema::nodes)]
 pub struct NewNode {
     pub public_key: String,
