@@ -2,12 +2,15 @@
 
 diesel::table! {
     nodes (id) {
-        id -> Uuid,
+        id -> Int4,
+        #[max_length = 255]
         public_key -> Varchar,
+        #[max_length = 255]
         alias -> Varchar,
+        #[max_length = 255]
         capacity -> Varchar,
-        first_seen -> Varchar,
         created_at -> Timestamptz,
         updated_at -> Timestamptz,
+        first_seen -> Varchar,
     }
 }
