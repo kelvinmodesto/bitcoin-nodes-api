@@ -13,6 +13,8 @@ pub struct Node {
     pub alias: String,
     pub capacity: String,
     pub first_seen: String,
+    pub created_at: chrono::DateTime<chrono::Utc>,
+    pub updated_at: chrono::DateTime<chrono::Utc>,
 }
 
 #[derive(Insertable, Serialize, Deserialize, Debug)]
