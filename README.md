@@ -122,7 +122,7 @@ Between 4 and 6 hours. I'm not sure.
 Extra validations, I'd like to look more carefully my model and dto to avoid future issues, and more tests, specially e2e tests.
 
 ## What do you think is the weakest part of your project?
-I didn't have enough time to implement all the features I wanted, per example, I didn't implement any cron routine that I planned to do running hourly a routine to upsert all nodes every hour without break data consistency. I lost some time testing mongodb and trying to make it work with the current implementation and I changed my mind and use a relational database instead(PostgreSQL).
+I didn't have enough time to implement all the features I wanted, per example, I didn't implement any cron routine that I planned to do, that upsert all nodes every hour without break data consistency. I lost some time testing mongodb and trying to make it work with the current implementation and I changed my mind and use a relational database instead(PostgreSQL), it can be visible how it went on my model and my dto.
 
 ## Is there any other information you’d like us to know?
-Any AI assistance or vibe code was used to generate code, only regular research and development, it's far from perfect, but it's a good starting point with the deadline that I gave for myself.
+Any AI assistance or vibe code was used to generate code(Only to generate valid mocks and repetitive code), only regular research and development, it's far from perfect, but it's a good starting point with the deadline that I gave for myself.
